@@ -63,5 +63,18 @@ Paso 3: Instalar Laravel de manera global
 
 		Versiones anterios
 			user@user:~/tu_ruta$ composer create-project --prefer-dist laravel/laravel nombredelproyecto "5.2.*"
-		
- 
+
+Paso 4: Correr el proyecto de laravel creado
+	Ahora nos dirigimos a nuestra ruta del proyecto.
+ 		user@user:~/tu_ruta/nombredelproyecto$
+
+ 	Ahora instalamos las dependencias de laravel en nuestro proyecto.
+ 		user@user:~/tu_ruta/nombredelproyecto$ composer install
+
+ 	Ahora ejecutamos el comando que nos provee artisan para correr el servicio.
+		user@user:~/tu_ruta/nombredelproyecto$ php artisan serve
+
+	Ahora vamos a nuestro navegador faborito y vamos a:
+		http://localhost:8000/
+
+		y taraaaan nuestro ya esta corriendo ... para para el servicio Ctrl + c
