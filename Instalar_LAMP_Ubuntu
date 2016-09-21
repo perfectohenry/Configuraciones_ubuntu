@@ -32,3 +32,30 @@ Queremos mover el archivo de índice de PHP se indica arriba a la primera posici
 Cuando haya terminado, guarde y cierre el archivo presionando Ctrl-X . Vas a tener que confirmar el salve escribiendo Y y luego pulsa Enter para confirmar la ubicación de almacenamiento de archivos.
 Después de esto, tenemos que reiniciar el servidor web Apache para que nuestros cambios sean reconocidos. Puede hacerlo escribiendo esto:
 	sudo systemctl restart apache2
+
+Instalación de módulos de PHP
+Si decidimos que php-clies algo que necesitamos, podemos escribir:
+	sudo apt-get install php-cli
+	sudo apt-get install package1 package2 ...
+
+
+Prueba de Procesamiento de PHP en el servidor Web
+
+Con el fin de probar que nuestro sistema está configurado correctamente para PHP, podemos crear un script PHP muy básico.
+
+Vamos a llamar a este script info.php. Con el fin de Apache para buscar el archivo y servir correctamente, se debe guardar en un directorio muy específico, que se llama la "raíz web".
+
+En Ubuntu 16.04, este directorio se encuentra en /var/www/html/. Podemos crear el archivo en esa ubicación escribiendo:
+	sudo nano /var/www/html/info.php
+
+	Esto abrirá un archivo en blanco. Queremos poner el texto siguiente, que es el código PHP válido, dentro del archivo:
+	
+		<?php
+			phpinfo();
+
+	Cuando haya terminado, guarde y cierre el archivo.
+
+	Ahora podemos probar si nuestro servidor web puede visualizar correctamente el contenido generado por un script PHP. Para probar esto, sólo tenemos que visitar esta página en nuestro navegador web. Necesitará la dirección IP pública del servidor de nuevo.
+
+
+
