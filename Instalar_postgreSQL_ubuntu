@@ -41,11 +41,11 @@ Configurar el password para el usuario postgresql:
 
 	Encuentra la línea de $conf[ 'extra_login_security'] = true; y cambiar el valor a false para que pueda iniciar sesión en phpPgAdmin con el usuario postgres.
 		// If extra login security is true, then logins via phpPgAdmin with no
-        // password or certain usernames (pgsql, postgres, root, administrator)
-        // will be denied. Only set this false once you have read the FAQ and
-        // understand how to change PostgreSQL's pg_hba.conf to enable
-        // passworded local connections.
-        $conf['extra_login_security'] = false;
+		// password or certain usernames (pgsql, postgres, root, administrator)
+		// will be denied. Only set this false once you have read the FAQ and
+		// understand how to change PostgreSQL's pg_hba.conf to enable
+		// passworded local connections.
+		$conf['extra_login_security'] = false;
 
     Reiniciar PostgreSQL y Apache2:
     	systemctl restart postgresql
