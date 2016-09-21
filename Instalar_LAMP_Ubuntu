@@ -6,5 +6,29 @@ Antes de empezar actualiza su sistema:
 Instalar Apache 2.4 desde el repositorio de Ubuntu:
 	sudo apt-get install apache2
 
+Instalar el mysql-serverpaquete y elegir una contraseña segura cuando se le solicite:
+	sudo apt-get install mysql-server
 
+Instalar PHP7, la extensión de PHP y repositorio de aplicaciones, soporte de Apache, MySQL y soporte:
+	sudo apt-get install php-pear php libapache2-mod-php php-mcrypt php-mysql
 
+Opcionalmente, instale el enrollamiento adicional, JSON, y el apoyo CGI:
+	sudo apt-get install php-rizo php-JSON php-cgi
+
+En la mayoría de los casos, vamos a querer modificar la forma en que Apache proporciona archivos cuando se solicita un directorio. Actualmente, si un usuario solicita un directorio del servidor, Apache buscará primero un archivo llamado index.html. Queremos decirle a nuestro servidor web a preferir los archivos PHP, así que haremos que Apache busque un index.php archivo primero.
+Para ello, escriba este comando para abrir el dir.conf archivo en un editor de texto con privilegios de root:
+	sudo nano /etc/apache2/mods-enabled/dir.conf
+
+Se parece a esto:
+	<IfModule mod_dir.c>
+	    DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+	</IfModule>
+
+Queremos mover el archivo de índice de PHP se indica arriba a la primera posición después de la DirectoryIndex especificación, así:
+	<IfModule mod_dir.c>
+	    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+	</IfModule>
+
+Cuando haya terminado, guarde y cierre el archivo presionando Ctrl-X . Vas a tener que confirmar el salve escribiendo Y y luego pulsa Enter para confirmar la ubicación de almacenamiento de archivos.
+Después de esto, tenemos que reiniciar el servidor web Apache para que nuestros cambios sean reconocidos. Puede hacerlo escribiendo esto:
+	sudo systemctl restart apache2
