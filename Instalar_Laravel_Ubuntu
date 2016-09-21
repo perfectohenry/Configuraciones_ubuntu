@@ -1,2 +1,67 @@
-# Instalar Lamp en ubuntu 16.04
+# Instalar Laravel 5.* en ubuntu 16.04
+
+Primeramente debemos instalar Composer:
+	Composer es una herramienta que se utiliza para la gestión de dependencias de las aplicaciones escritas con PHP.
+	Composer es capaz de instalar automáticamente las versiones correctas de las bibliotecas (libraries) que necesitas con sólo tipear un comando o editar un archivo de texto.
+
+
+Requisitos previos:
+	Tener instalado Ubuntu 16.04.
+	Haber instalado el ambiente LAMP
+
+
+Paso 1: Instalar CURL
+	Antes que nada, debemos tener instalado curl en nuestro sistema, esto se hace escribiendo el siguiente comando en la consola y paquetes necesarios.
+		sudo apt-get install curl php5-cli git
+
+
+Paso 2: Instalar Composer de manera global
+	Una vez instalado curl empezamos con la instalación de Composer, esto se hace, al igual que la instalación de curl, dentro de la consola, tenemos que escribir el siguiente comando:
+		curl -sS https://getcomposer.org/installer | php
+
+	Esto hará que se descargue en nuestra carpeta home el archivo composer.
+	phar el cuál tendría que ser llamado cada vez que queramos hacer uso de el, 
+	nosotros en este tutorial vamos a instalarlo de manera global para que Composer pueda ser 
+	llamado desde cualquier lugar sin importar la carpeta en la que nos encontremos, 
+	esto se hace pasando el archivo composer.phar a la carpeta /usr/local/bin 
+	y se hace con el siguiente comando:
+		sudo mv ~/composer.phar /usr/local/bin/composer
+
+	Noten que cuando movemos composer hacia su nueva ruta no lleva la extensión, 
+	esto es para poder ejecutarlo luego de manera más fácil y amigable.
+
+	Una vez que hayamos movido composer hacia la ruta /usr/local/bin podemos simplemente 
+	teclear composer en la terminal y nos mostrará algo como esto:
+		composer
+		Composer version 1.2.1 2016-09-12 11:27:19
+
+		Usage:
+		  command [options] [arguments]
+
+		Options:
+		  -h, --help                     Display this help message
+		  -q, --quiet                    Do not output any message
+		  -V, --version                  Display this application version
+		...
+
+	Si podemos ver esto hemos instalado composer exitosamente de manera global, 
+	ahora sólo es necesario configurar el instalador de Laravel.
+
+
+Paso 3: Instalar Laravel de manera global
+	Instalar Laravel puede hacerse de 3 maneras diferentes pero en este tutorial veremos 
+	la que es más cómoda desde mi punto de vista.
+
+	Ya con Composer instalado, sólo tenemos que ingresar el siguiente comando en la consola:
+		Antes primero debemos ir a nuestro carpeta personal y crear una carpeta para nuestros 
+		proyectos de laravel.
+
+		user@user:~$ cd /tu_ruta/
+
+		Última version de laravel
+			user@user:~/tu_ruta$ composer create-project --prefer-dist laravel/laravel nombredelproyecto
+
+		Versiones anterios
+			user@user:~/tu_ruta$ composer create-project --prefer-dist laravel/laravel nombredelproyecto "5.2.*"
+		
  

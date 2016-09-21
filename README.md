@@ -1,1 +1,1 @@
-# Configuraciones_ubuntu
+# Configuraciones en Gnome Ubuntu 16.04
