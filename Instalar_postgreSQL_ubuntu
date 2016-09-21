@@ -1,0 +1,65 @@
+# Instalar PostgreSQL y PgAdmin en Linux Ubuntu 16.04 LTS Xenial Xerus
+
+Instalar PostgreSQL:
+	sudo apt-get install postgresql postgresql-contrib
+
+Ingresar en postgresql desde una terminal:
+	sudo -u postgres psql postgres
+
+Configurar el password para el usuario postgresql:
+	postgres=# \password postgres
+	Enter new password:
+	Enter it again:
+	postgres=# \q
+
+
+#Instalar PgAdmin:
+	sudo apt-get install pgadmin3
+
+
+#Instalar Phppgadmin
+	
+	sudo apt-get install phppgadmin
+
+	Configurar Apache 2:
+	Es necesario configurar Apache para phpPgAdmin. Editar el archivo /etc/apache2/conf-available/phppgadmin.conf con nano escribiendo:
+
+		cd /etc/apache2/conf-available/
+		sudo nano phppgadmin.conf
+
+	Comentar la línea #Require local mediante la adición de una # delante de la línea y añadir debajo de la línea permitirá de todo por lo que se puede acceder desde el navegador.
+
+		# Only allow connections from localhost:
+		# Require local
+		Allow From all
+
+
+	Configurar phpPgAdmin:
+	Editar el archivo /etc/phppgadmin/config.inc.php escribiendo:
+		cd / etc / phpPgAdmin / 
+		sudo config.inc.php nano
+
+	Encuentra la línea de $conf[ 'extra_login_security'] = true; y cambiar el valor a false para que pueda iniciar sesión en phpPgAdmin con el usuario postgres.
+		// If extra login security is true, then logins via phpPgAdmin with no
+        // password or certain usernames (pgsql, postgres, root, administrator)
+        // will be denied. Only set this false once you have read the FAQ and
+        // understand how to change PostgreSQL's pg_hba.conf to enable
+        // passworded local connections.
+        $conf['extra_login_security'] = false;
+
+    Reiniciar PostgreSQL y Apache2:
+    	systemctl restart postgresql
+		systemctl restart apache2
+
+
+
+links:
+	ubuntu 16.04:
+		https://www.howtoforge.com/tutorial/ubuntu-postgresql-installation/
+		https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04
+
+	ubuntu 14.04:
+		https://www.digitalocean.com/community/tutorials/como-configurar-virtual-host-de-apache-en-ubuntu-14-04-lts-es
+
+		sudo /etc/init.d/postgresql restart
+		sudo service apache2 restart
