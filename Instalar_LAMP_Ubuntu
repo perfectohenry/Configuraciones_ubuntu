@@ -1,0 +1,10 @@
+# Instalar LAMP en Ubuntu 16.04
+
+Antes de empezar actualiza su sistema:
+	sudo apt-get update && sudo apt-get upgrade
+
+Instalar Apache 2.4 desde el repositorio de Ubuntu:
+	sudo apt-get install apache2
+
+
+
