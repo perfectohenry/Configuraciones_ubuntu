@@ -49,13 +49,38 @@ En Ubuntu 16.04, este directorio se encuentra en /var/www/html/. Podemos crear e
 	sudo nano /var/www/html/info.php
 
 	Esto abrirá un archivo en blanco. Queremos poner el texto siguiente, que es el código PHP válido, dentro del archivo:
-	
+
 		<?php
 			phpinfo();
 
 	Cuando haya terminado, guarde y cierre el archivo.
 
 	Ahora podemos probar si nuestro servidor web puede visualizar correctamente el contenido generado por un script PHP. Para probar esto, sólo tenemos que visitar esta página en nuestro navegador web. Necesitará la dirección IP pública del servidor de nuevo.
+
+
+phpMyAdmin está disponible en los repositorios por defecto del sistema operativo Ubuntu. Una vez LAMP está instalado y listo, instale phpMyAdmin como se muestra a continuación:
+	
+	sudo apt-get install phpmyadmin php-mbstring php-gettext
+
+	Durante la instalación, se le pedirá que elija el servidor web que debe ser configurado automáticamente para ejecutar phpMyAdmin. En nuestro caso, es Apache servidor web.
+
+	Elija apache2 y haga clic en OK.
+
+	Seleccione Sí y pulse Enter para configurar la base de datos de phpMyAdmin con dbconfig-común.
+
+	Introducir una contraseña para phpmyadmin para registrarse con el servidor de base de datos. Si se deja en blanco, se generará una contraseña aleatoria.
+
+	Vuelva a introducir la contraseña para confirmar.
+
+	A continuación, cambie el archivo de servidor web de configuración de Apache:
+		sudo nano /etc/apache2/apache2.conf
+
+	Agregue la siguiente línea al final:
+		Include /etc/phpmyadmin/apache.conf
+
+	Guarde y cierre el archivo. Reiniciar el servicio de Apache para tener efecto los cambios.
+		sudo systemctl restart apache2
+
 
 
 
