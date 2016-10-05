@@ -78,3 +78,19 @@ Paso 4: Correr el proyecto de laravel creado
 		http://localhost:8000/
 
 		y taraaaan nuestro ya esta corriendo ... para para el servicio Ctrl + c
+
+
+
+
+OTROS
+	sudo nano hosts
+		127.0.0.1 "domininio local"
+
+	despues:
+	sudo apt-get update
+	sudo apt-get install mcrypt
+
+	sudo phpenmod mcrypt
+	sudo a2enmod rewrite
+	sudo systemctl restart apache2
+
