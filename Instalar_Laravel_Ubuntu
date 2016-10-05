@@ -94,3 +94,7 @@ OTROS
 	sudo a2enmod rewrite
 	sudo systemctl restart apache2
 
+
+	https://www.digitalocean.com/community/tutorials/como-configurar-virtual-host-de-apache-en-ubuntu-14-04-lts-es
+
+	https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-16-04
