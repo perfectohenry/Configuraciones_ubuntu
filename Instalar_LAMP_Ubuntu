@@ -158,6 +158,7 @@ Paso 3. Instalar PHP
 
 	Esto instalará PHP sin problemas.
 
+
 Paso 4. Dar preferencia al archivo index.php
 	En la mayoría de los casos será mejor modificar la manera en que Apache
 	busca la dirección de algún directorio solicitado. Normalmente, si un
@@ -167,7 +168,7 @@ Paso 4. Dar preferencia al archivo index.php
 
 	Para hacer esto, escribimos en la terminal lo siguiente.
 
-		sudo gedit /etc/apache2/mods-enabled/dir.conf
+		sudo nano /etc/apache2/mods-enabled/dir.conf
 
 	Deberá verse como esto:
 		DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
@@ -179,6 +180,30 @@ Paso 4. Dar preferencia al archivo index.php
 	esos cambios a la configuración.
 		sudo service apache2 restart
 
-	
+	Escribiremos un archivo de nombre info.php. En Ubuntu 14.04, el directorio
+	está localizado en /var/www/html/. Así que ahí será donde lo crearemos:
+		sudo nano /var/www/html/info.php
+
+	Se creará un archivo en blanco, y dentro escribiremos código PHP:
+		<?php phpinfo(); ?>
 
 
+Paso 4. Instalar phpMyadmin
+	sudo apt-get update
+	sudo apt-get install phpmyadmin
+
+	configuración basica
+		seleccione apache2 y enter
+
+		seleccione yes y enter
+
+		ingrese password de mysql y enter
+
+	configurar apache
+		Add the following to the bottom of the file:
+
+			nano /etc/apache2/apache2.conf
+
+			Include /etc/phpmyadmin/apache.conf
+
+			service apache2 restart
