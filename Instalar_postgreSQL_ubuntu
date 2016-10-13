@@ -63,3 +63,45 @@ links:
 
 		sudo /etc/init.d/postgresql restart
 		sudo service apache2 restart
+
+
+
+
+# Instalar PostgreSQL, PgAdmin y phppgadmin en Linux Ubuntu 14.04 LTS
+
+	sudo apt-get update
+	sudo apt-get install postgresql postgresql-contrib
+
+	cambiar password:
+		sudo -i -u postgres
+		psql
+
+		postgres=# \password postgres
+		Enter new password:
+		Enter it again:
+		postgres=# \q
+
+
+	Instalar PgAdmin:
+		sudo apt-get install pgadmin3
+
+
+	Instalar phppgadmin
+		sudo apt-get update
+		sudo apt-get install phppgadmin
+
+		configuracion para acceso remoto:
+			sudo nano /etc/apache2/conf.d/phppgadmin
+
+			order deny,allow
+			deny from all
+			allow from 127.0.0.0/255.0.0.0 ::1/128
+			allow from all
+
+		habilitar ruta:
+			nano /etc/apache2/apache2.conf
+
+			Include /etc/apache2/conf.d/phppgadmin
+
+			sudo service apache2 reload
+
